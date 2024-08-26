@@ -1,0 +1,36 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+a.mat-button.active {
+  border-bottom: 2px solid white;
+  transition: border-bottom 0.3s ease-in-out;
+}
+
+a.mat-button {
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+a.mat-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.navbar-menu-button {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .mat-toolbar {
+    flex-direction: column;
+  }
+}
