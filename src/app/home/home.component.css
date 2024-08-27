@@ -1,0 +1,111 @@
+body {
+    font-family: 'Open Sans', serif;
+    padding-top: 54px;
+    color: #868e96;
+    margin: 0;
+  }
+  
+  #sideNav {
+    background-color: #BD5D38;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 17rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .img-profile {
+    max-width: 10rem;
+    border-radius: 50%;
+    border: 0.5rem solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .nav-item {
+    width: 100%;
+  }
+  
+  .nav-link {
+    display: block;
+    padding: 10px 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .nav-link:hover {
+    background-color: #824027;
+  }
+  
+  .container {
+    margin-left: 18rem;
+    padding: 20px;
+  }
+  
+  .resume-section {
+    border-bottom: 1px solid #dee2e6;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  h1 {
+    font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #343a40;
+    font-size: 6rem;
+    line-height: 5.5rem;
+  }
+  
+  .text-primary {
+    color: #BD5D38;
+  }
+  
+  .subheading {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Saira Extra Condensed', serif;
+    font-size: 1.35rem;
+  }
+  
+  .list-social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .list-social-icons li {
+    margin-right: 10px;
+  }
+  
+  .list-social-icons a {
+    color: #495057;
+    font-size: 1.75rem;
+    text-decoration: none;
+  }
+  
+  .list-social-icons a:hover {
+    color: #BD5D38;
+  }
+  
