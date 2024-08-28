@@ -44,6 +44,10 @@ body {
   }
   
   .nav-link {
+    cursor: pointer; /* Cambia el cursor a una manita */
+    color: #007bff; /* Color de texto para enlaces */
+    text-decoration: none; /* Quita subrayado */
+
     display: block;
     padding: 10px 0;
     font-weight: 600;
@@ -55,7 +59,13 @@ body {
   
   .nav-link:hover {
     background-color: #824027;
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+
   }
+  
+  
+  
+  
   
   .container {
     margin-left: 18rem;
@@ -109,3 +119,6 @@ body {
     color: #BD5D38;
   }
   
+  .nav-spacing {
+    margin-top: 20px; /* O la cantidad de espacio que necesites */
+  }

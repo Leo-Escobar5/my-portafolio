@@ -1,40 +1,89 @@
-<div id="page-top">
-    <nav id="sideNav" class="navbar">
-      <a class="navbar-brand" href="#page-top">
-        <span class="d-lg-none">Start Bootstrap</span>
-        <span class="d-none d-lg-block">
-          <img class="img-profile" src="assets/img/profile.jpg" alt="Profile Picture">
-        </span>
-      </a>
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#interests">Interests</a></li>
-        <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
-      </ul>
-    </nav>
+<div id="page-top" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column">
+  <!-- Añadir un espacio superior al contenido -->
+  <div style="height: 20px; width: 100%;"></div>
+
+  <nav id="sideNav" class="navbar nav-spacing" fxFlex="20" fxFlex.xs="100" fxLayout="column" fxLayoutAlign="start center">
+    <a class="navbar-brand" href="#page-top" fxLayoutAlign="center center">
+      <span class="d-lg-none">Leonardo Escobar</span>
+      <span class="d-none d-lg-block">
+        <img class="img-profile" src="assets/img/profile.jpg" alt="Profile Picture">
+      </span>
+    </a>
+    <ul class="navbar-nav" fxLayout="column" fxLayoutAlign="start stretch">
+      <li class="nav-item"><a class="nav-link" (click)="scrollToSection('page-top')">About</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="scrollToSection('experience')">Experience</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="scrollToSection('education')">Education</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="scrollToSection('skills')">Skills</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="scrollToSection('interests')">Interests</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="scrollToSection('awards')">Awards</a></li>
+    </ul>
+  </nav>
   
-    <div class="container">
-      <section id="about" class="resume-section">
-        <div>
-          <h1>Leonardo <span class="text-primary">Escobar</span></h1>
-          <div class="subheading mb-5">3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 ·
-            <a href="mailto:name@email.com">nameemail.com</a>
-          </div>
-          <p>I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews...</p>
-          <ul class="list-social-icons">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fa fa-github"></i></a></li>
-          </ul>
+
+  <div class="container" fxFlex="80" fxFlex.xs="100" fxLayout="column" fxLayoutAlign="start stretch">
+    <section id="about" class="resume-section" fxLayout="column" fxLayoutAlign="start start">
+      <div>
+        <h1>Leonardo <span class="text-primary">Escobar</span></h1>
+        <div class="subheading mb-5">Nacionalidad: Mexicana · 22 años</div>
+        <div class="subheading mb-5">
+          <a href="mailto:leo_fcleon{{ '@' }}hotmail.com">leo_fcleon{{ '@' }}hotmail.com</a> ·
+          <a href="mailto:leofcleon{{ '@' }}gmail.com">leofcleon{{ '@' }}gmail.com</a>
         </div>
-      </section>
-  
-      <!-- Repeat similar sections for Experience, Education, Skills, Interests, Awards -->
-  
-    </div>
+        <p>Estudiante universitario en la última etapa de la universidad en el ámbito de áreas computacionales. Con grandes ambiciones y metas a futuro, en busca de oportunidades para crecer en el ámbito profesional y adquirir experiencia. Ofrezco mis conocimientos en diversos temas de la computación, con una actitud positiva y la motivación de seguir aprendiendo.</p>
+        <ul class="list-social-icons" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+          <li><a href="https://github.com/Leo-Escobar5"><i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="experience" class="resume-section" fxLayout="column" fxLayoutAlign="start start">
+      <h2 class="mb-5">Experiencia Laboral</h2>
+      <div class="resume-item">
+        <h3 class="mb-0">ITSMARTS</h3>
+        <div class="subheading mb-3">Desarrollador móvil (2023)</div>
+        <p>Desarrollo de funcionalidades para la aplicación de Telcel en Android. Desarrollo en JAVA con Android Studio.</p>
+      </div>
+      <div class="resume-item">
+        <h3 class="mb-0">Seguridad Segma</h3>
+        <div class="subheading mb-3">Auxiliar de ingeniería (2023)</div>
+        <p>Atención en un sistema de seguridad en monitoreo y alarmas.</p>
+      </div>
+    </section>
+
+    <section id="education" class="resume-section" fxLayout="column" fxLayoutAlign="start start">
+      <h2 class="mb-5">Educación</h2>
+      <div class="resume-item">
+        <h3 class="mb-0">Universidad Tecnológica de León</h3>
+        <div class="subheading mb-3">Ingeniería en Desarrollo y Gestión de Software (2022-2024)</div>
+        <p>Técnico Superior Universitario (TSU) en Desarrollo de Software Multiplataforma (2020-2022).</p>
+      </div>
+    </section>
+
+    <section id="skills" class="resume-section" fxLayout="column" fxLayoutAlign="start start">
+      <h2 class="mb-5">Habilidades Técnicas</h2>
+      <ul class="list-unstyled">
+        <li>Lenguaje JAVA</li>
+        <li>Lenguaje Python</li>
+        <li>Lenguaje C# con .NET</li>
+        <li>Lenguaje Dart (con Flutter)</li>
+        <li>Framework Angular</li>
+        <li>Framework React JS</li>
+        <li>Lenguaje JavaScript</li>
+        <li>Base de Datos MySQL</li>
+      </ul>
+    </section>
+
+    <section id="interests" class="resume-section" fxLayout="column" fxLayoutAlign="start start">
+      <h2 class="mb-5">Intereses</h2>
+      <p>Interesado en el desarrollo de software, aplicaciones móviles, y tecnologías emergentes en el ámbito de la informática. Motivado para aprender y crecer en el campo de la ingeniería de software.</p>
+    </section>
+
+    <section id="awards" class="resume-section" fxLayout="column" fxLayoutAlign="start start">
+      <h2 class="mb-5">Logros Académicos</h2>
+      <ul class="list-unstyled">
+        <li>Realización de programa de gestión de becarios en el periodo ESTADIA.</li>
+        <li>Realización de programa de carrito de compras en el periodo ESTADIA.</li>
+      </ul>
+    </section>
   </div>
-  
+</div>

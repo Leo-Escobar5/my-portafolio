@@ -34,3 +34,15 @@ a.mat-button:hover {
     flex-direction: column;
   }
 }
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegúrate de que el navbar esté sobre otros elementos */
+}
+
+/* Añade un margen superior al contenido principal para evitar que quede detrás del navbar */
+router-outlet + * {
+  margin-top: 64px; /* Ajusta este valor según la altura de tu toolbar */
+}
