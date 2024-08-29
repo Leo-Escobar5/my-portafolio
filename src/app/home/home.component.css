@@ -122,3 +122,33 @@ body {
   .nav-spacing {
     margin-top: 20px; /* O la cantidad de espacio que necesites */
   }
+
+  .mat-raised-button {
+    margin-top: 15px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #343a40; /* Gris oscuro */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Cambia el cursor a una manita */
+}
+
+.mat-raised-button:hover {
+    background-color: #23272b; /* Un gris más oscuro al hacer hover */
+    transform: translateY(-2px); /* Elevar ligeramente el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mat-raised-button:active {
+    background-color: #1d2124; /* Un gris aún más oscuro al hacer click */
+    transform: translateY(0); /* Eliminar la elevación al hacer click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+  

@@ -1,6 +1,8 @@
 <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
-  <span>{{ title }}</span>
-
+  <a routerLink="home" routerLinkActive="active" class="navbar-title">
+    <span>{{ title }}</span>
+  </a>
+  
   <!-- Botón de menú para pantallas pequeñas -->
   <button mat-icon-button [matMenuTriggerFor]="menu" class="navbar-menu-button" fxHide fxShow.lt-md>
     <mat-icon>menu</mat-icon>

@@ -18,5 +18,12 @@ export class HomeComponent {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
-
+  downloadCV() {
+    const link = document.createElement('a');
+    link.href = 'assets/cv/cv.pdf'; // Ruta desde 'public/assets'
+    link.download = 'Leonardo_Escobar_CV.pdf';
+    link.click();
+  }
+  
+  
 }
