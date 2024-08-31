@@ -21,7 +21,7 @@ export class NodejsApiComponent implements OnInit, OnDestroy {
   public userId: string = ''; // ID del usuario generado o ingresado
 
   ngOnInit() {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('http://20.127.152.201:3000');
 
     // Cargar mensajes anteriores de la sala seleccionada
     this.socket.on('loadMessages', (loadedMessages: { name: string; message: string }[]) => {
