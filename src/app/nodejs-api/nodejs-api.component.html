@@ -1,1 +1,52 @@
-<p>nodejs-api works!</p>
+<div>
+  <h2>Chat en Tiempo Real</h2>
+
+  <label for="room">Sala:</label>
+  <select [(ngModel)]="roomInput">
+    <option
+      *ngFor="
+        let room of [
+          'sala1',
+          'sala2',
+          'sala3',
+          'sala4',
+          'sala5',
+          'sala6',
+          'sala7',
+          'sala8',
+          'sala9',
+          'sala10'
+        ]
+      "
+    >
+      {{ room }}
+    </option>
+  </select>
+
+  <!-- Input para el nombre -->
+  <input [(ngModel)]="nameInput" placeholder="Tu nombre" />
+
+  <!-- Input para el ID del usuario -->
+  <input [(ngModel)]="userIdInput" placeholder="Tu ID único" />
+
+  <!-- Botón para unirse a la sala -->
+  <button (click)="joinRoom()">Unirse a la sala</button>
+
+  <!-- Botón para abandonar la sala -->
+  <button (click)="leaveRoom()">Abandonar la sala</button>
+
+  <!-- Mostrar usuarios en línea -->
+  <h3>Usuarios en línea en {{ roomInput }}</h3>
+  <ul>
+    <li *ngFor="let user of users">{{ user.name }} (ID: {{ user.userId }})</li>
+  </ul>
+
+  <!-- Mostrar mensajes -->
+  <div *ngFor="let msg of messages">
+    <strong>{{ msg.name }}:</strong> {{ msg.message }}
+  </div>
+
+  <!-- Input y botón para enviar mensajes -->
+  <input [(ngModel)]="messageInput" placeholder="Escribe un mensaje..." />
+  <button (click)="sendMessage()">Enviar</button>
+</div>
