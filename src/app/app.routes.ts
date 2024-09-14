@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
     //rutas
@@ -6,7 +7,12 @@ export const routes: Routes = [
     {path: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)},
     {path: 'dotnet-api', loadComponent: () => import('./dotnet-api/dotnet-api.component').then(m => m.DotnetApiComponent)},
     {path: 'laravel-api', loadComponent: () => import('./laravel-api/laravel-api.component').then(m => m.LaravelApiComponent)},
-    {path: 'nodejs-api', loadComponent: () => import('./nodejs-api/nodejs-api.component').then(m => m.NodejsApiComponent)},
+    {
+        path: 'nodejs-api',
+        loadComponent: () => import('./nodejs-api/nodejs-api.component').then(m => m.NodejsApiComponent),
+        canActivate: [AuthGuard] // Protege esta ruta
+      },
     {path: 'python-api', loadComponent: () => import('./python-api/python-api.component').then(m => m.PythonApiComponent)},
-    
+    {path: 'access-denied', loadComponent: () => import('./access-denied/access-denied.component').then(m => m.AccessDeniedComponent)},
+    {path: '**', loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent)},
 ];

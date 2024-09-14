@@ -1,32 +1,103 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+<mat-toolbar
+  color="primary"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+>
   <a routerLink="home" routerLinkActive="active" class="navbar-title">
     <span>{{ title }}</span>
   </a>
-  
+
   <!-- Botón de menú para pantallas pequeñas -->
-  <button mat-icon-button [matMenuTriggerFor]="menu" class="navbar-menu-button" fxHide fxShow.lt-md>
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    class="navbar-menu-button"
+    fxHide
+    fxShow.lt-md
+  >
     <mat-icon>menu</mat-icon>
   </button>
 
   <!-- Menú desplegable para pantallas pequeñas -->
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="home" routerLinkActive="active">Home</button>
-    <button mat-menu-item routerLink="dotnet-api" routerLinkActive="active">.NET API</button>
-    <button mat-menu-item routerLink="laravel-api" routerLinkActive="active">Laravel API</button>
-    <button mat-menu-item routerLink="nodejs-api" routerLinkActive="active">NodeJS API</button>
-    <button mat-menu-item routerLink="python-api" routerLinkActive="active">Python API</button>
+    <button mat-menu-item routerLink="home" routerLinkActive="active">
+      Home
+    </button>
+    <button mat-menu-item routerLink="dotnet-api" routerLinkActive="active">
+      .NET API
+    </button>
+    <button mat-menu-item routerLink="laravel-api" routerLinkActive="active">
+      Laravel API
+    </button>
+    <!-- Mostrar "NodeJS API" solo si está autenticado -->
+    <button
+      mat-menu-item
+      routerLink="nodejs-api"
+      routerLinkActive="active"
+      *ngIf="isAuthenticated"
+    >
+      NodeJS API
+    </button>
+    <button mat-menu-item routerLink="python-api" routerLinkActive="active">
+      Python API
+    </button>
+    <!-- Botón de logout para pantallas pequeñas -->
+    <button mat-menu-item *ngIf="isAuthenticated" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Cerrar sesión
+    </button>
+    <!-- Botón de iniciar sesión para pantallas pequeñas -->
+    <button
+      mat-menu-item
+      *ngIf="!isAuthenticated"
+      routerLink="dotnet-api"
+      routerLinkActive="active"
+    >
+      <mat-icon>login</mat-icon>
+      Iniciar sesión
+    </button>
   </mat-menu>
 
   <!-- Enlaces normales para pantallas grandes -->
   <div fxLayout="row" fxLayoutGap="10px" fxHide.lt-md>
-    <span mat-button style="font-family: 'Noto Color Emoji'; font-size: 24px;">
-      👦 <!-- Emoji de un monito -->
+    <span mat-button style="font-family: 'Noto Color Emoji'; font-size: 24px">
+      👦
+      <!-- Emoji de un monito -->
       <i class="fas fa-arrow-right"></i>
     </span>
     <a mat-button routerLink="dotnet-api" routerLinkActive="active">.NET API</a>
-    <a mat-button routerLink="laravel-api" routerLinkActive="active">Laravel API</a>
-    <a mat-button routerLink="nodejs-api" routerLinkActive="active">NodeJS API</a>
-    <a mat-button routerLink="python-api" routerLinkActive="active">Python API</a>
+    <a mat-button routerLink="laravel-api" routerLinkActive="active"
+      >Laravel API</a
+    >
+    <!-- Mostrar "NodeJS API" solo si está autenticado -->
+    <a
+      mat-button
+      routerLink="nodejs-api"
+      routerLinkActive="active"
+      *ngIf="isAuthenticated"
+      >NodeJS API</a
+    >
+    <a mat-button routerLink="python-api" routerLinkActive="active"
+      >Python API</a
+    >
+    <!-- Botón de logout para pantallas grandes -->
+    <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Cerrar sesión
+    </button>
+    <!-- Botón de iniciar sesión para pantallas grandes -->
+    <a
+      mat-button
+      *ngIf="!isAuthenticated"
+      routerLink="dotnet-api"
+      routerLinkActive="active"
+    >
+      <mat-icon>login</mat-icon>
+      Iniciar sesión
+    </a>
   </div>
 </mat-toolbar>
-<router-outlet #outlet="outlet" [@routeAnimations]="prepareRoute(outlet)"></router-outlet>
+<router-outlet
+  #outlet="outlet"
+  [@routeAnimations]="prepareRoute(outlet)"
+></router-outlet>

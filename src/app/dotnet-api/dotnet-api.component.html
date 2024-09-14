@@ -1,1 +1,72 @@
-<p>dotnet-api works!</p>
+<div fxLayout="row" fxLayoutAlign="center center" class="login-container">
+  <mat-card class="login-card" fxLayout="column" fxLayoutGap="20px">
+    <mat-card-header>
+      <mat-card-title fxFlexAlign="center">Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        fxLayout="column"
+        fxLayoutGap="15px"
+      >
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="Enter your email"
+          />
+          <mat-error
+            *ngIf="
+              loginForm.controls['email'].invalid &&
+              loginForm.controls['email'].touched
+            "
+          >
+            Please enter a valid email
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Enter your password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="
+              loginForm.controls['password'].invalid &&
+              loginForm.controls['password'].touched
+            "
+          >
+            Password is required
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
+      </form>
+
+      <!-- Mostrar error de login -->
+      <div *ngIf="loginError" class="login-error">
+        {{ loginError }}
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
