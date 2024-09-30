@@ -1,0 +1,22 @@
+<div class="verification-container">
+  <mat-card class="verification-card">
+    <mat-card-header>
+      <!-- Icono de éxito -->
+      <mat-icon *ngIf="isSuccess" class="success-icon">check_circle</mat-icon>
+      <!-- Icono de error -->
+      <mat-icon *ngIf="isError" class="error-icon">error</mat-icon>
+      <mat-card-title>Verificación de Correo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Indicador de carga -->
+      <div *ngIf="isLoading" class="spinner-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Verificando tu correo electrónico...</p>
+      </div>
+      <!-- Mensaje de éxito o error -->
+      <div *ngIf="!isLoading">
+        <p>{{ message }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

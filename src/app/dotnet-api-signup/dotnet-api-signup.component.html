@@ -1,0 +1,148 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="signup-container">
+  <mat-card class="signup-card" fxLayout="column" fxLayoutGap="20px">
+    <mat-card-header>
+      <mat-card-title fxFlexAlign="center">Crear una cuenta</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        [formGroup]="signupForm"
+        (ngSubmit)="onSubmit()"
+        fxLayout="column"
+        fxLayoutGap="15px"
+      >
+        <!-- Campo de Nombre de Usuario -->
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre de Usuario</mat-label>
+          <input
+            matInput
+            formControlName="username"
+            placeholder="Ingresa tu nombre de usuario"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            placeholder="Ingresa tu nombre"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input
+            matInput
+            formControlName="lastName"
+            placeholder="Ingresa tu apellido"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="Ingresa tu email"
+          />
+        </mat-form-field>
+
+        <!-- Campo de Fecha de Nacimiento -->
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="dateOfBirth"
+            placeholder="Selecciona tu fecha de nacimiento"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Campo de Género -->
+        <mat-form-field appearance="fill">
+          <mat-label>Género</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="Male">Masculino</mat-option>
+            <mat-option value="Female">Femenino</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Crea una contraseña"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="
+              hidePassword ? 'Mostrar contraseña' : 'Ocultar contraseña'
+            "
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Confirmar Contraseña</mat-label>
+          <input
+            matInput
+            [type]="hideConfirmPassword ? 'password' : 'text'"
+            formControlName="confirmPassword"
+            placeholder="Confirma tu contraseña"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hideConfirmPassword = !hideConfirmPassword"
+            [attr.aria-label]="
+              hideConfirmPassword ? 'Mostrar contraseña' : 'Ocultar contraseña'
+            "
+          >
+            <mat-icon>{{
+              hideConfirmPassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="signupForm.invalid"
+        >
+          Registrarse
+        </button>
+      </form>
+
+      <!-- Opción para volver al login -->
+      <div
+        class="login-option"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px"
+      >
+        <span>¿Ya tienes una cuenta?</span>
+        <button
+          mat-button
+          color="accent"
+          routerLink="/dotnet-api"
+          routerLinkActive="active"
+        >
+          Iniciar sesión
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

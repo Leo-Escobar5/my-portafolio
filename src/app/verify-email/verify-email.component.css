@@ -1,0 +1,12 @@
+.verification-card {
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .verification-message {
+    font-size: 18px;
+    color: #555;
+  }
+  
