@@ -1,50 +1,70 @@
 .login-container {
-    width: 100%;
-    height: 100vh;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px; /* Padding para evitar que el contenido toque los bordes */
-  }
-  
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+mat-card-title {
+  text-align: center;
+  font-size: 24px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.additional-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.link-option {
+  text-decoration: none;
+  color: #3f51b5; /* Color primario de Angular Material */
+  font-weight: 500;
+}
+
+.link-option:hover {
+  text-decoration: underline;
+}
+
+.login-error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
   .login-card {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: auto; /* Centra la tarjeta horizontalmente */
+    max-width: 100%;
   }
-  
+
   mat-card-title {
-    text-align: center;
-    font-size: 24px;
+    font-size: 20px;
   }
-  
+
   mat-form-field {
     width: 100%;
   }
-  
+
   button {
-    margin-top: 20px;
-    width: 100%;
+    margin-top: 15px;
   }
-  
-  @media (max-width: 600px) {
-    .login-card {
-      max-width: 100%;
-    }
-  
-    mat-card-title {
-      font-size: 20px;
-    }
-  
-    mat-form-field {
-      width: 100%;
-    }
-  
-    button {
-      margin-top: 15px;
-    }
-  }
-  
+}

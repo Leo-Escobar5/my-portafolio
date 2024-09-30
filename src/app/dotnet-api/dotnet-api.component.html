@@ -39,7 +39,7 @@
             mat-icon-button
             matSuffix
             (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
+            [attr.aria-label]="hide ? 'Show password' : 'Hide password'"
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
@@ -62,6 +62,22 @@
           Login
         </button>
       </form>
+
+      <!-- Opciones adicionales -->
+      <div
+        class="additional-options"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px"
+      >
+        <a routerLink="/forgot-password" class="link-option">
+          ¿Olvidaste tu contraseña?
+        </a>
+        <span>¿No tienes una cuenta?</span>
+        <button mat-button color="accent" routerLink="/dotnet-api-signup">
+          Crear una cuenta
+        </button>
+      </div>
 
       <!-- Mostrar error de login -->
       <div *ngIf="loginError" class="login-error">

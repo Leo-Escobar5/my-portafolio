@@ -64,3 +64,18 @@ mat-toolbar {
 router-outlet + * {
   margin-top: 64px; /* Ajusta este valor según la altura de tu toolbar */
 }
+/* Elimina el margen superior anterior si lo tienes */
+router-outlet + * {
+  margin-top: 0;
+}
+
+.content {
+  padding-top: 64px; /* Altura de la barra de herramientas en desktop */
+}
+
+/* Ajusta el padding para dispositivos móviles si es necesario */
+@media (max-width: 600px) {
+  .content {
+    padding-top: 56px; /* Altura de la barra de herramientas en móvil */
+  }
+}

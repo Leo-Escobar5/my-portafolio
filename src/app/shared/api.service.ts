@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private API_URL = 'https://[2806:2f0:6020:d4f8::656]:7152/api/Users';
+  private API_URL = 'https://animelegacyapi20240929203941.azurewebsites.net/api/Users';
 
   constructor(private http: HttpClient) { }
 
@@ -46,5 +46,20 @@ export class ApiService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { email, password };
     return this.http.post<any>(url, body, { headers });
+  } 
+  verifyEmail(token: string): Observable<any> {
+    const url = `${this.API_URL}/verify`;
+    const params = new HttpParams().set('token', token);
+    return this.http.get<any>(url, { params });
   }
+  patchUser(id: string, patchDoc: any): Observable<any> {
+    const url = `${this.API_URL}/${id}`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json-patch+json' });
+    return this.http.patch<any>(url, patchDoc, { headers });
+  }
+
+  registerUser(userData: any) {
+    return this.http.post(`${this.API_URL}`, userData);
+  }
+  
 }

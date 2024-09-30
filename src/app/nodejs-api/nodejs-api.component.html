@@ -1,33 +1,80 @@
-<div>
+<mat-toolbar color="primary">
+  <span>Aplicación de Chat</span>
+</mat-toolbar>
+
+<div class="chat-container">
   <!-- Selección de sala y botón para unirse -->
-  <div *ngIf="!isInRoom">
-    <h2>Selecciona una sala</h2>
-    <label for="room">Sala:</label>
-    <select [(ngModel)]="roomInput">
-      <option *ngFor="let room of rooms">{{ room }}</option>
-    </select>
-    <button (click)="joinRoom()">Unirse a la sala</button>
+  <div *ngIf="!isInRoom" class="room-selection">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar>chat</mat-icon>
+        <mat-card-title>Selecciona una Sala</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Sala</mat-label>
+            <mat-select [(ngModel)]="roomInput" name="room">
+              <mat-option *ngFor="let room of rooms" [value]="room">{{
+                room
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="joinRoom()">
+            Unirse a la Sala
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
 
   <!-- Botón para abandonar la sala -->
-  <div *ngIf="isInRoom">
-    <button (click)="leaveRoom()">Abandonar la sala</button>
+  <div *ngIf="isInRoom" class="leave-room">
+    <button mat-stroked-button color="warn" (click)="leaveRoom()">
+      <mat-icon>exit_to_app</mat-icon> Abandonar la Sala
+    </button>
   </div>
 
   <!-- Área de chat -->
-  <div *ngIf="isInRoom">
-    <h3>Usuarios en línea en {{ roomInput }}</h3>
-    <ul>
-      <li *ngFor="let user of users">
-        {{ user.name }} (ID: {{ user.userId }})
-      </li>
-    </ul>
+  <div *ngIf="isInRoom" class="chat-area">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar>people</mat-icon>
+        <mat-card-title>Usuarios en Línea en {{ roomInput }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let user of users">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <h4 mat-line>{{ user.name }}</h4>
+            <p mat-line>ID: {{ user.userId }}</p>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
 
-    <div *ngFor="let msg of messages">
-      <strong>{{ msg.name }}:</strong> {{ msg.message }}
-    </div>
+    <mat-card class="messages-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>message</mat-icon>
+        <mat-card-title>Mensajes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="messages">
+          <div *ngFor="let msg of messages" class="message">
+            <strong>{{ msg.name }}:</strong> {{ msg.message }}
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-    <input [(ngModel)]="messageInput" placeholder="Escribe un mensaje..." />
-    <button (click)="sendMessage()">Enviar</button>
+    <mat-card class="message-input-card">
+      <form (ngSubmit)="sendMessage()" class="message-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Escribe un mensaje...</mat-label>
+          <input matInput [(ngModel)]="messageInput" name="message" required />
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit">Enviar</button>
+      </form>
+    </mat-card>
   </div>
 </div>

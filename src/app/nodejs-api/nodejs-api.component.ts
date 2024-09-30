@@ -2,11 +2,28 @@ import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar'; // Opcional
 
 @Component({
   selector: 'app-nodejs-api',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatListModule,
+    MatInputModule,
+    MatIconModule,
+    MatToolbarModule // Opcional
+  ],
   templateUrl: './nodejs-api.component.html',
   styleUrls: ['./nodejs-api.component.css']
 })
@@ -44,12 +61,15 @@ export class NodejsApiComponent implements OnInit, OnDestroy {
 
     // Cuando el socket se conecte, verifica si hay una sala almacenada
     this.socket.on('connect', () => {
-      console.log('Conectado al servidor de Socket.IO');
-      if (storedRoom) {
-        this.roomInput = storedRoom;
-        this.joinRoom();
-      }
+      this.ngZone.run(() => {
+        console.log('Conectado al servidor de Socket.IO');
+        if (storedRoom) {
+          this.roomInput = storedRoom;
+          this.joinRoom();
+        }
+      });
     });
+
 
     // Manejadores de eventos del socket
     this.socket.on('loadMessages', (loadedMessages: { name: string; message: string }[]) => {
@@ -98,10 +118,12 @@ export class NodejsApiComponent implements OnInit, OnDestroy {
   joinRoom() {
     if (!this.isInRoom) {
       this.socket.emit('joinRoom', { room: this.roomInput, name: this.userName, userId: this.userId });
-      this.isInRoom = true;
-      console.log('Unido a la sala:', this.roomInput, 'isInRoom:', this.isInRoom);
-      // Almacena la sala en localStorage
-      localStorage.setItem('currentRoom', this.roomInput);
+      this.ngZone.run(() => {
+        this.isInRoom = true;
+        console.log('Unido a la sala:', this.roomInput, 'isInRoom:', this.isInRoom);
+        // Almacena la sala en localStorage
+        localStorage.setItem('currentRoom', this.roomInput);
+      });
     }
   }
 
@@ -119,14 +141,17 @@ export class NodejsApiComponent implements OnInit, OnDestroy {
   leaveRoom() {
     if (this.isInRoom) {
       this.socket.emit('leaveRoom', { room: this.roomInput, userId: this.userId });
-      // Limpiar la sala de localStorage
-      localStorage.removeItem('currentRoom');
-      this.isInRoom = false;
-      this.messages = [];
-      this.users = [];
-      console.log('Abandonaste la sala, isInRoom establecido a false');
+      this.ngZone.run(() => {
+        // Limpiar la sala de localStorage
+        localStorage.removeItem('currentRoom');
+        this.isInRoom = false;
+        this.messages = [];
+        this.users = [];
+        console.log('Abandonaste la sala, isInRoom establecido a false');
+      });
     }
   }
+
 
   ngOnDestroy() {
     if (this.socket) {

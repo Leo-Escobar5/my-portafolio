@@ -97,7 +97,9 @@
     </a>
   </div>
 </mat-toolbar>
-<router-outlet
-  #outlet="outlet"
-  [@routeAnimations]="prepareRoute(outlet)"
-></router-outlet>
+<div class="content">
+  <router-outlet
+    #outlet="outlet"
+    [@routeAnimations]="prepareRoute(outlet)"
+  ></router-outlet>
+</div>

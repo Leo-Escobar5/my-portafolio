@@ -1,15 +1,17 @@
+// not-found.component.ts
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-not-found',
-  templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.css']
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  template: `
+    <h1>Página no encontrada</h1>
+    <p>La página que buscas no existe.</p>
+    <a routerLink="/">Volver al inicio</a>
+  `,
+  styles: [/* estilos */]
 })
-export class NotFoundComponent {
-  constructor(private router: Router) {}
-
-  goHome() {
-    this.router.navigate(['/']); // Navega a la página de inicio
-  }
-}
+export class NotFoundComponent {}
